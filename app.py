@@ -45,7 +45,11 @@ def predict():
     vector = vectorizer.transform([text])
     result = model.predict(vector)
 
-    return render_template('index.html', predicteeeed = "Not Spam" if result  == 0 else "Spam")
+    # return render_template('index.html', predicteeeed = "NOT SPAM" if result  == 0  else "SPAM")
+    prediction = "NOT SPAM" if result == 0 else "SPAM"
+    color_class = "green" if result == 0 else "red"
+
+    return render_template('index.html', prediction=prediction, color_class=color_class)
 
 if __name__ == '__main__':
     app.run(debug = True)
